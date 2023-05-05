@@ -102,13 +102,7 @@ import {getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword,init
           password:password.value
         }).then(()=>{
           alert("success")
-          setTimeout(()=>{
-            const link = document.createElement('a');
-    link.href = '/user-app/';
-    link.click()
-    
-          }
-    ,1000)
+          window.location.href="/"
         }).catch(()=>{
           alert("failed")
           window.location.reload()
