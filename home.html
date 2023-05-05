@@ -1,75 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/bootstrap.css">
-    <link rel="stylesheet" href="css/home.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <script src="js/bootstrap.js"></script>
-    <title>Dashboard </title>
-</head>
-<body id="user-home">
-
-    <nav class="navbar navbar-expand-lg d-bg navbar-light ">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="/home.html">Dashboard</a>
-          <button class="navbar-toggler text-dark" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+   <head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" href="css/bootstrap.css">
+      <link rel="stylesheet" href="css/home.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+      <script src="js/bootstrap.js"></script>
+      <title>Dashboard </title>
+   </head>
+   <body id="user-home">
+      <nav class="navbar navbar-expand-lg d-bg navbar-light ">
+         <div class="container-fluid">
+            <a class="navbar-brand" href="/home.html">Dashboard</a>
+            <button class="navbar-toggler text-dark" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon "></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarScroll">
-            <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav" style="--bs-scroll-height: 100px;">
-              
-            </ul>
-            <div class="d-flex">
-                <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav" style="--bs-scroll-height: 100px;">
-                  <li class="nav-item">
-                   <p class="nav-link active text-dark"><span class="name"></span></p>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link text-muted" id="logout"  tabindex="-1" aria-disabled="true">logout</a>
-                  </li>
-                </ul>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarScroll">
+               <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav" style="--bs-scroll-height: 100px;">
+               </ul>
+               <div class="d-flex">
+                  <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav" style="--bs-scroll-height: 100px;">
+                     <li class="nav-item">
+                        <p class="nav-link active text-dark"><span class="name"></span></p>
+                     </li>
+                     <li class="nav-item">
+                        <a class="nav-link text-muted" id="logout"  tabindex="-1" aria-disabled="true">logout</a>
+                     </li>
+                  </ul>
+               </div>
             </div>
-          </div>
-        </div>
+         </div>
       </nav>
       <div class="alert alert-success d-none  d-flex" role="alert" id="success">
-      welcome &nbsp;<span class="name"></span></p>
+         welcome &nbsp;<span class="name"></span></p>
       </div>
       <div class="container my-5">
-            <div class="card-body">
-              <ul class="nav nav-pills" id="myTab" role="tablist">
-                <li class="nav-item" role="presentation">
+         <div class="card-body">
+            <ul class="nav nav-pills" id="myTab" role="tablist">
+               <li class="nav-item" role="presentation">
                   <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Home</button>
-                </li>
-                <li class="nav-item" role="presentation">
+               </li>
+               <li class="nav-item" role="presentation">
                   <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Profile</button>
-                </li>
-                
-              </ul>
-              <div class="tab-content my-5" id="myTabContent">
-                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+               </li>
+            </ul>
+            <div class="tab-content my-5" id="myTabContent">
+               <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                   <p class="display-5">Switch to profile tab to view your details</p>
-                </div>
-                <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+               </div>
+               <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                   <p class="display-4">
-                    <ul class="p-ul display-7 container">
-                      <li class="p-li">Name: <span class="name"></span>
-                      </li>
-                      <li class="p-li">Phone: <span class="ph"></span></li>
-                      <li class="p-li">Email: <span class="email"></span></li>
-                      <li class="p-li">Country: <span class="cc"></span></li>
-                      <li class="p-li d-flex align-items-center">Password: <input type="password" class="pass" readonly> <i class="fa-solid fa-eye fa-sm"></i><i class="fa-solid fa-eye-slash d-none fa-sm"></i> </li>
-                    </ul>
-                </p>
-                </div>
-              </div>
-                
+                  <ul class="p-ul display-7 container">
+                     <li class="p-li">Name: <span class="name"></span>
+                     </li>
+                     <li class="p-li">Phone: <span class="ph"></span></li>
+                     <li class="p-li">Email: <span class="email"></span></li>
+                     <li class="p-li">Country: <span class="cc"></span></li>
+                     <li class="p-li d-flex align-items-center">Password: <input type="password" class="pass" readonly> <i class="fa-solid fa-eye fa-sm"></i><i class="fa-solid fa-eye-slash d-none fa-sm"></i> </li>
+                  </ul>
+                  </p>
+               </div>
             </div>
+         </div>
       </div>
-      <script type="module" src="/js/firebase-config.js"></script>
-      <script type="module" src="/js/home.js"></script>
-</body>
+      <script type="module" src="js/firebase-config.js"></script>
+      <script type="module" src="js/home.js"></script>
+   </body>
 </html>
