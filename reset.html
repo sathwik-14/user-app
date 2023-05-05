@@ -60,7 +60,9 @@ resetForm.addEventListener("submit", function(event) {
   sendPasswordResetEmail(auth, email.value)
     .then(() => {
       alert('Password reset email sent');
-      window.location.href="/index.html"
+      const link = document.createElement('a');
+link.href = '/home.html';
+link.dispatchEvent(new MouseEvent('click'));
     })
     .catch((error) => {
       alert("something went wrong");

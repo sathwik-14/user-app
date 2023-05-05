@@ -160,7 +160,12 @@ app,db,auth,userRef} from '/js/index.js'
       password:password.value
     }).then(()=>{
       alert("success")
-      setTimeout(()=>window.location.href="/index.html"
+      setTimeout(()=>{
+        const link = document.createElement('a');
+link.href = '/index.html';
+link.dispatchEvent(new MouseEvent('click'));
+
+      }
 ,1000)
     }).catch(()=>{
       alert("failed")

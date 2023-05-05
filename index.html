@@ -73,7 +73,10 @@ const failed = document.querySelector("#failed");
 onAuthStateChanged(auth, (user) => {
   if (user) {
     console.log("User is authenticated"+user.email+user.password);
-    window.location.href='/home.html'
+    const link = document.createElement('a');
+link.href = '/home.html';
+link.dispatchEvent(new MouseEvent('click'));
+
   } else {
     console.log("User is not authenticated");
   }
@@ -121,7 +124,9 @@ form2.addEventListener("submit", function(event) {
       roll.style.display="none"
     
       setTimeout(function(){
-        window.location.href="/home.html"
+        const link = document.createElement('a');
+link.href = '/home.html';
+link.dispatchEvent(new MouseEvent('click'));
 
       },1500)
     })

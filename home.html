@@ -113,7 +113,7 @@ success.classList.add("d-none")
         const nestedObject=snapshot.val()
         const key=Object.keys(snapshot.val())[0].toString()
         const userData=nestedObject[key]
-name[0].innerText=userData.fname+" "+userData.mname+" "+userData.lname
+name[0].innerText=userData.fname
 name[1].innerText=userData.fname+" "+userData.mname+" "+userData.lname
 name[2].innerText=userData.fname+" "+userData.mname+" "+userData.lname
 
@@ -134,13 +134,16 @@ fetch('cc.json')
     } else {
       console.log("User is not authenticated");
       alert("Please sign In to continue")
-      window.location.href='/index.html'
+      const link = document.createElement('a');
+link.href = '/index.html';
+link.dispatchEvent(new MouseEvent('click'));
     }
   });
 logout.addEventListener("click",function(){
     signOut(auth)
     .then(()=>
         {
+          window.close()
         }
     ).catch(()=>{
         alert("cannot logout")
