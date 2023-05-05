@@ -104,7 +104,7 @@ import {getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword,init
           alert("success")
           setTimeout(()=>{
             const link = document.createElement('a');
-    link.href = '/user-app/index.html';
+    link.href = '/';
     link.click()
     
           }
