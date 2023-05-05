@@ -102,7 +102,7 @@ import {getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword,init
           password:password.value
         }).then(()=>{
           alert("success")
-          window.location.href="/"
+          window.location.href="/user-app/"
         }).catch(()=>{
           alert("failed")
           window.location.reload()
