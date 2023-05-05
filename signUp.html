@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
+    <title>Sign Up Page</title>
+</head>
+<body class="container">
+  <div id="cover-spin"></div>
+    <div class="card mx-auto mt-1 p-2 " >
+        
+          <h5 class="card-title text-center mb-4">Sign Up</h5>
+
+          <form action="#"  id="signUpForm" class="signUpForm container text-center form ">    
+        <div class="container inputs d-flex flex-column animate__animated animate__bounceIn">
+            
+            <input class="in-tile  mt-2" type="text" name="fname" id="fname" title="enter valid first name" pattern="^[a-zA-z]+([\s][a-zA-Z]+)*$" placeholder="first name" required>
+     
+            <input class="in-tile  " type="text" name="mname" id="mname"  title="enter valid middle name" pattern="^[a-zA-z]+([\s][a-zA-Z]+)*$" placeholder="middle name">
+
+            <input class="in-tile  " type="text" name="lname" id="lname" title="enter valid last name" pattern="^[a-zA-z]+([\s][a-zA-Z]+)*$" placeholder="last name" >
+        
+            <input class="in-tile  " type="email" name="email" id="email" title="enter valid email" placeholder="example@gmail.com" maxlength="30" required>
+        <div class="d-flex ph ">
+            <input type="text" style="width:20%;" type="text" name="cc" id="cc" class="in-tile " pattern="^(\+?\d{1,3}|\d{1,4})$" placeholder="+91"  minlength="2" maxlength="3" required>
+            <input class="in-tile  " style="width:80%;" type="tel" name="ph" id="ph" pattern="[0-9]{10}" placeholder="phone number" minlength="7" maxlength="10" required>
+        </div>
+        <div class="in-tile  p-tile">
+            <input class="" type="password" name="pass" id="pass" minlength="8" maxlength="20" placeholder="password" title="passowrd" required>
+            
+            <i class="fa-solid fa-eye fa-lg text-muted me-3"></i>
+            <i class="fa-solid fa-eye-slash fa-lg text-muted me-3"></i>
+            </div>
+            <div class="in-tile  p-tile">
+            <input class="" type="password" name="cpass" id="cpass" maxlength="20" minlength="8" placeholder=" confirm password" required>
+            <i class="fa-solid fa-eye fa-lg text-muted me-3"></i>
+            <i class="fa-solid fa-eye-slash fa-lg text-muted me-3"></i>
+            </div>
+        </div>
+        
+        <button class="btn btn-primary btn-lg mt-5 p-3" type="submit">Submit&nbsp;&nbsp;<i class="fa-solid fa-right-to-bracket"></i></button>
+        <p class="text-muted mt-4">Already have an account?&nbsp;<a href="index.html">Sign In</a></p>
+
+        </form>
+      
+      </div>
+
+<script>
+  const showpass= document.getElementsByClassName("fa-eye");
+const hidepass=document.getElementsByClassName("fa-eye-slash");
+const password = document.getElementById("pass");
+const confirmPassword = document.getElementById("cpass");
+  showpass[0].addEventListener("click",function(){
+    if(password.value.length !=0){
+    if(password.type=="password"){
+        password.type="text";
+        showpass[0].style.display="none";
+        hidepass[0].style.display="inline"
+    }
+    else{
+        password.type="password"   
+    }
+}
+})
+showpass[1].addEventListener("click",function(){
+    if(confirmPassword.value.length !=0){
+    if(confirmPassword.type=="password"){
+        confirmPassword.type="text";
+        showpass[1].style.display="none";
+        hidepass[1].style.display="inline"
+    }
+    else{
+        confirmPassword.type="password"   
+    }
+}
+})
+hidepass[0].addEventListener("click",function(){
+    if(password.type=="text"){
+        password.type="password";
+        showpass[0].style.display="inline";
+        hidepass[0].style.display="none"
+    }
+    else
+        password.type="text"
+})
+hidepass[1].addEventListener("click",function(){
+    if(confirmPassword.type=="text"){
+        confirmPassword.type="password";
+        showpass[1].style.display="inline";
+        hidepass[1].style.display="none"
+    }
+    else
+        confirmPassword.type="text"
+})
+</script>
+
+<script type="module">
+import {getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword,initializeApp,getDatabase, ref, set,push,onValue,
+app,db,auth,userRef} from '/js/index.js'
+
+
+  const form1 = document.querySelector(".signUpForm");
+  const form2 = document.querySelector("#signInForm");
+  const intile = document.querySelectorAll(".in-tile");
+  const mobile = document.getElementById("ph");
+  const countryCode = document.getElementById("cc");
+  const email = document.getElementById("email");
+  const firstName = document.getElementById("fname");
+  const lastName = document.getElementById("lname");
+  const middleName = document.getElementById("mname");
+  const roll=document.querySelector("#cover-spin")
+  
+  
+    //sign Up Page
+  
+  form1.addEventListener("submit", function(event) {
+    event.preventDefault(); 
+    roll.style.display="block"
+  
+    if (!validateEmail(email.value)) {
+      alert("Invalid email address");
+      return;
+    }
+  
+  
+    if (!validatePassword(password.value)) {
+      alert("password should contain:\nminimum length of 8\natleast 1 number\natleast 1 special character and \natleast 1 alphabet");
+      return;
+    }
+  
+  
+    if (password.value !== confirmPassword.value) {
+      alert("Passwords do not match");
+      return;
+    }
+    if(countryCode.value.length == 2){
+      countryCode.value="+"+countryCode.value
+    }
+    var newUserRef = push(userRef);
+    createUserWithEmailAndPassword(auth,email.value, password.value)
+    .then((userCredential) => {
+      // User signed up successfully
+      const user = userCredential.user;
+      console.log(user);
+      set(newUserRef,{
+      fname: firstName.value,
+      mname:middleName.value,
+      lname:lastName.value,
+      email:email.value,
+      country:countryCode.value,
+      phone:mobile.value,
+      password:password.value
+    }).then(()=>{
+      alert("success")
+      setTimeout(()=>window.location.href="/index.html"
+,1000)
+    }).catch(()=>{
+      alert("failed")
+      window.location.reload()
+    })
+   
+    })
+    .catch((error) => {
+      // Handle errors here
+      console.error(error);
+      alert("email already exist")
+      window.location.reload()
+    });
+    
+  });
+  
+  
+  
+  function validateEmail(email) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  }
+  
+  
+  
+  function validatePassword(password) {
+     
+    return /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,}$/.test(password);
+  }
+  </script>
+</body>
+</html>

@@ -1,0 +1,138 @@
+// *{
+//     border: red solid 1px;
+// }
+
+//spinner
+#cover-spin {
+    position:fixed;
+    width:100%;
+    left:0;right:0;top:0;bottom:0;
+    background-color: rgba(255,255,255,0.7);
+    z-index:9999;
+    display:none;
+}
+
+@-webkit-keyframes spin {
+	from {-webkit-transform:rotate(0deg);}
+	to {-webkit-transform:rotate(360deg);}
+}
+
+@keyframes spin {
+	from {transform:rotate(0deg);}
+	to {transform:rotate(360deg);}
+}
+
+#cover-spin::after {
+    content:'';
+    display:block;
+    position:absolute;
+    left:48%;top:40%;
+    width:40px;height:40px;
+    border-style:solid;
+    border-color:black;
+    border-top-color:transparent;
+    border-width: 4px;
+    border-radius:50%;
+    -webkit-animation: spin .8s linear infinite;
+    animation: spin .8s linear infinite;
+}
+
+
+body{
+    margin: 0;
+}
+
+$bg: #f8f9fd;
+$pc: #1cc6c7;
+
+*{
+    scroll-behavior: smooth;
+   
+}
+.navbar-brand{
+    color: $pc;
+}
+
+    .fa-eye:hover,.fa-eye-slash:hover{
+        cursor: pointer;
+    }
+
+body{
+    margin: 0;
+    padding: 1rem;
+}
+.card{
+    background-color: transparent;
+    border: none;
+    border-radius: 1.2rem;
+    height: 750px;
+}
+
+.inputs{
+    gap:1rem;
+}
+
+input{
+    background-color: transparent;
+    border-radius: 3rem;
+    border: none;
+    outline: none;
+    padding: .8rem;
+    &::placeholder{
+        color: #6c757d;
+    }
+
+}
+input[type="checkbox"]:checked{
+    background-color:#1cc6c7;
+}
+
+.in-tile{
+    border-radius: 1rem;
+    box-shadow:#1cc6c7 0px 4px  15px -10px;
+    &:hover{
+        box-shadow:#1cc6ff 0px 6px  15px -10px;
+
+    }
+}
+
+.ph{
+    align-items: center;
+    gap: .4rem;
+}
+.card-title{
+    font-size: 3rem;
+    color:$pc;
+}
+
+.p-tile{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.btn{
+    width: 60%;
+    border: none;
+    border-radius: 3rem;
+    background: rgb(29,141,204);
+background: linear-gradient(90deg, rgba(29,141,204,1) 30%, rgba(17,193,208,1) 100%);
+box-shadow:rgb(29,141,204) 1px 3px 7px -2px;
+}
+
+i.fa-eye-slash{
+    display: none;
+}
+
+@media (max-width:575.98px){}
+@media (min-width:576px) and (max-width:767.98px){}
+@media (min-width:768px){
+    .signUpForm{
+        width: 600px;
+        input{
+            margin-top:.4rem;
+        }
+    }
+
+}
+

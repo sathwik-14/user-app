@@ -1,0 +1,46 @@
+$bg: #f8f9fd;
+$pc: #1cc6c7;
+// *{
+//     border: red solid 1px;
+// }
+.navbar{
+    background-color: $bg !important;
+}
+
+.navbar-brand{
+    color: $pc !important;
+    font-weight: bolder;
+}
+.p-ul{
+text-decoration: none;
+font-style: none;
+list-style: none;
+
+margin: 0;
+.p-li{
+    
+    margin: 1rem 0;
+    font-style: none;
+    text-decoration: none;
+    list-style: none;
+}
+}
+.pass{
+    width: 46%;
+    border: none;
+    outline: none;
+    margin-left: 1rem;
+}
+
+
+.d-bg{
+    background-color: $bg;
+}
+
+.d-c{
+    color: $pc;
+}
+
+#logout{
+    cursor: pointer;
+}

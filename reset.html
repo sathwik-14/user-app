@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="css/style.css">
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
+    <title>Password Reset </title>
+</head>
+<body class="container">
+   
+    <div class="card mx-auto mt-1 p-4 " >
+        
+          <h2 class="text-info text-center mb-4">Password Reset</h2>
+
+          <form action="#"  id="resetForm" class="signUpForm container text-center form">    
+        <div class="container inputs d-flex flex-column animate__animated animate__bounceIn">
+
+       
+            <div class="in-tile p-tile">
+                <input class="" type="email" name="email" id="email" minlength="8" maxlength="20" placeholder="Enter Email" title="password" required>
+                
+                </div>
+                
+
+                      
+        </div>
+        
+            <button class="btn btn-primary btn-lg mt-5 p-3" type="submit">Submit&nbsp;&nbsp;<i class="fa-solid fa-right-to-bracket"></i></button>
+                <p class="text-muted mt-4">Don't have an account?&nbsp;<a href="signUp.html">Create account</a></p>
+
+        </form>
+      
+      </div>
+<script src="index.js" type="module"></script>
+      <script type="module">
+     import {auth,sendPasswordResetEmail} from '/index.js'
+
+     const resetForm=document.getElementById("resetForm")
+     const email = document.querySelector('#email');
+
+     function validateEmail(email) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  }
+  
+
+resetForm.addEventListener("submit", function(event) {
+  event.preventDefault(); 
+
+  if (!validateEmail(email.value)) {
+      alert("Invalid email address");
+      return;
+    }
+  sendPasswordResetEmail(auth, email.value)
+    .then(() => {
+      alert('Password reset email sent');
+      window.location.href="/index.html"
+    })
+    .catch((error) => {
+      alert("something went wrong");
+    });
+
+})
+
+    </script>
+</body>
+</html>

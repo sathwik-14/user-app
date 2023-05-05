@@ -1,0 +1,40 @@
+.navbar {
+  background-color: #f8f9fd !important;
+}
+
+.navbar-brand {
+  color: #1cc6c7 !important;
+  font-weight: bolder;
+}
+
+.p-ul {
+  text-decoration: none;
+  font-style: none;
+  list-style: none;
+  margin: 0;
+}
+.p-ul .p-li {
+  margin: 1rem 0;
+  font-style: none;
+  text-decoration: none;
+  list-style: none;
+}
+
+.pass {
+  width: 46%;
+  border: none;
+  outline: none;
+  margin-left: 1rem;
+}
+
+.d-bg {
+  background-color: #f8f9fd;
+}
+
+.d-c {
+  color: #1cc6c7;
+}
+
+#logout {
+  cursor: pointer;
+}/*# sourceMappingURL=home.css.map */

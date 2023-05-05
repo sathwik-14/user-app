@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="js/bootstrap.js"></script>
+    <title>Dashboard </title>
+</head>
+<body id="user-home">
+
+    <nav class="navbar navbar-expand-lg d-bg navbar-light ">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="/home.html">Dashboard</a>
+          <button class="navbar-toggler text-dark" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon "></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarScroll">
+            <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav" style="--bs-scroll-height: 100px;">
+              
+            </ul>
+            <div class="d-flex">
+                <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav" style="--bs-scroll-height: 100px;">
+                  <li class="nav-item">
+                   <p class="nav-link active text-dark"><span class="name"></span></p>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link text-muted" id="logout"  tabindex="-1" aria-disabled="true">logout</a>
+                  </li>
+                </ul>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <div class="alert alert-success  d-flex" role="alert" id="success">
+      welcome &nbsp;<span class="name"></span></p>
+      </div>
+      <div class="container my-5">
+            <div class="card-body">
+              <ul class="nav nav-pills" id="myTab" role="tablist">
+                <li class="nav-item" role="presentation">
+                  <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Home</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                  <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Profile</button>
+                </li>
+                
+              </ul>
+              <div class="tab-content my-5" id="myTabContent">
+                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                  <p class="display-5">Switch to profile tab to view your details</p>
+                </div>
+                <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                  <p class="display-4">
+                    <ul class="p-ul display-7 container">
+                      <li class="p-li">Name: <span class="name"></span>
+                      </li>
+                      <li class="p-li">Phone: <span class="ph"></span></li>
+                      <li class="p-li">Email: <span class="email"></span></li>
+                      <li class="p-li">Country: <span class="cc"></span></li>
+                      <li class="p-li d-flex align-items-center">Password: <input type="password" class="pass" readonly> <i class="fa-solid fa-eye fa-sm"></i><i class="fa-solid fa-eye-slash d-none fa-sm"></i> </li>
+                    </ul>
+                </p>
+                </div>
+              </div>
+                
+            </div>
+      </div>
+          <script type="module">
+            
+            import {auth,onAuthStateChanged,userRef,orderByChild,equalTo,query,onValue,signOut} from '/js/index.js';
+            const showpass= document.getElementsByClassName("fa-eye");
+            const hidepass=document.getElementsByClassName("fa-eye-slash")
+            const userEmail=document.getElementById("user")
+      const name=document.querySelectorAll(".name")
+      const phone=document.querySelector(".ph")
+      const emailId=document.querySelector(".email")
+      const country=document.querySelector(".cc")
+      const password=document.querySelector(".pass")
+      const success=document.getElementById("success")
+      const logout=document.getElementById("logout")
+
+      
+
+      setTimeout(function(){
+success.classList.add("d-none")
+      },2000)
+
+
+            showpass[0].addEventListener("click",function(){
+              password.type="text"
+              showpass[0].classList.add("d-none")
+              hidepass[0].classList.remove("d-none")
+            })
+            hidepass[0].addEventListener("click",function(){
+              password.type="password"
+              showpass[0].classList.remove("d-none")
+              hidepass[0].classList.add("d-none")
+            })
+
+
+            onAuthStateChanged(auth, (user) => {
+    if (user) {
+      
+      const email=user.email
+      const queryRef = query(userRef, orderByChild("email"), equalTo(email));
+
+
+      onValue(queryRef, (snapshot) => {
+        const nestedObject=snapshot.val()
+        const key=Object.keys(snapshot.val())[0].toString()
+        const userData=nestedObject[key]
+name[0].innerText=userData.fname+" "+userData.mname+" "+userData.lname
+name[1].innerText=userData.fname+" "+userData.mname+" "+userData.lname
+name[2].innerText=userData.fname+" "+userData.mname+" "+userData.lname
+
+phone.innerText=userData.phone
+emailId.innerText=userData.email
+password.value=userData.password
+fetch('cc.json')
+  .then(response => response.json())
+  .then(data => {
+    
+    const countryDetails = data.find(c => c.dial_code === userData.country);
+    console.log(countryDetails.code); 
+    country.innerText=countryDetails.code
+
+  })
+  .catch(error => console.error(error));
+});
+    } else {
+      console.log("User is not authenticated");
+      alert("Please sign In to continue")
+      window.location.href='/index.html'
+    }
+  });
+logout.addEventListener("click",function(){
+    signOut(auth)
+    .then(()=>
+        {
+        }
+    ).catch(()=>{
+        alert("cannot logout")
+    })
+})
+          
+          </script>
+</body>
+</html>
