@@ -49,7 +49,7 @@
          .then(() => {
           alert('Password reset email sent');
           const link = document.createElement('a');
-         link.href = '/home.html';
+         link.href = 'home.html';
          link.dispatchEvent(new MouseEvent('click'));
          })
          .catch((error) => {
