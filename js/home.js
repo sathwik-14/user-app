@@ -64,7 +64,7 @@ country.innerText=countryDetails.code
 console.log("User is not authenticated");
 alert("Please sign In to continue")
 const link = document.createElement('a');
-link.href = '/index.html';
+link.href = 'index.html';
 link.dispatchEvent(new MouseEvent('click'));
 }
 });

@@ -17,7 +17,7 @@ import {getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword,init
       if (user) {
         console.log("User is authenticated"+user.email+user.password);
         const link = document.createElement('a');
-    link.href = '/home.html';
+    link.href = 'home.html';
     link.dispatchEvent(new MouseEvent('click'));
     
       } else {
@@ -68,7 +68,7 @@ import {getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword,init
         
           setTimeout(function(){
             const link = document.createElement('a');
-    link.href = '/home.html';
+    link.href = 'home.html';
     link.dispatchEvent(new MouseEvent('click'));
     
           },1500)
