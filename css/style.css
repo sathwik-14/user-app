@@ -1,3 +1,15 @@
+.modalbtn {
+  width: 30%;
+  border: none;
+  border-radius: 3rem;
+  padding: 0.5rem;
+}
+.modalbtn:hover {
+  background: rgb(29, 141, 204);
+  background: linear-gradient(90deg, rgb(29, 141, 204) 30%, rgb(17, 193, 208) 100%);
+  box-shadow: rgb(29, 141, 204) 1px 3px 7px -2px;
+}
+
 #cover-spin {
   position: fixed;
   width: 100%;

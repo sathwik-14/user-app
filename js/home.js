@@ -1,5 +1,5 @@
 
-import {auth,onAuthStateChanged,userRef,orderByChild,equalTo,query,onValue,signOut} from '/js/firebase-config.js';
+import {auth,onAuthStateChanged,userRef,orderByChild,equalTo,query,onValue,signOut} from './firebase-config.js';
 const showpass= document.getElementsByClassName("fa-eye");
 const hidepass=document.getElementsByClassName("fa-eye-slash")
 const userEmail=document.getElementById("user")
@@ -10,9 +10,9 @@ const country=document.querySelector(".cc")
 const password=document.querySelector(".pass")
 const success=document.getElementById("success")
 const logout=document.getElementById("logout")
+const homePage=document.getElementById("user-home")
 
-
-
+homePage.style.display="none"
 showpass[0].addEventListener("click",function(){
   password.type="text"
   showpass[0].classList.add("d-none")
@@ -27,12 +27,12 @@ hidepass[0].addEventListener("click",function(){
 
 onAuthStateChanged(auth, (user) => {
 if (user) {
-
+  homePage.style.display="block"
     setTimeout(function(){
         success.classList.remove("d-none")
         setTimeout(function(){
         success.classList.add("d-none")
-        },2000)
+        },3000)
         },100)
 const email=user.email
 const queryRef = query(userRef, orderByChild("email"), equalTo(email));
@@ -46,7 +46,7 @@ name[0].innerText=userData.fname
 name[1].innerText=userData.fname+" "+userData.mname+" "+userData.lname
 name[2].innerText=userData.fname+" "+userData.mname+" "+userData.lname
 
-phone.innerText=userData.phone
+phone.innerText=userData.country+userData.phone
 emailId.innerText=userData.email
 password.value=userData.password
 fetch('cc.json')
@@ -62,7 +62,7 @@ country.innerText=countryDetails.code
 });
 } else {
 console.log("User is not authenticated");
-alert("Please sign In to continue")
+// alert("Please sign In to continue")
 const link = document.createElement('a');
 link.href = 'index.html';
 link.dispatchEvent(new MouseEvent('click'));

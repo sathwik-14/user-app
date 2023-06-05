@@ -1,5 +1,8 @@
-import {getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword,initializeApp,getDatabase, ref, set,push,onValue,
-    app,db,auth,setPersistence, browserSessionPersistence,onAuthStateChanged} from '/js/firebase-config.js'
+import {getAuth, signInWithEmailAndPassword,
+  initializeApp,getDatabase, ref, set,push,onValue,
+    app,db,auth,setPersistence, 
+    browserSessionPersistence,
+    onAuthStateChanged} from './firebase-config.js'
     
     
     const form2 = document.querySelector("#signInForm");
@@ -71,7 +74,7 @@ import {getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword,init
     link.href = 'home.html';
     link.dispatchEvent(new MouseEvent('click'));
     
-          },1500)
+          },3500)
         })
         .catch((error) => {
           // Handle errors here

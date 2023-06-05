@@ -21,10 +21,10 @@
 }
 
 .pass {
-  width: 46%;
+  width: 130px;
   border: none;
   outline: none;
-  margin-left: 1rem;
+  margin-left: 0.2rem;
 }
 
 .d-bg {

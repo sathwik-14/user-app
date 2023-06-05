@@ -2,6 +2,18 @@
 //     border: red solid 1px;
 // }
 
+.modalbtn{
+    width: 30%;
+    border: none;
+    border-radius: 3rem;
+    padding: .5rem;
+    &:hover{
+        background: rgb(29,141,204);
+        background: linear-gradient(90deg, rgba(29,141,204,1) 30%, rgba(17,193,208,1) 100%);
+        box-shadow:rgb(29,141,204) 1px 3px 7px -2px;
+    }
+}
+
 //spinner
 #cover-spin {
     position:fixed;
@@ -11,6 +23,7 @@
     z-index:9999;
     display:none;
 }
+
 
 @-webkit-keyframes spin {
 	from {-webkit-transform:rotate(0deg);}
